@@ -1,0 +1,49 @@
+<html>
+<body>
+<getp httl.test.model.User user user>
+<print unsafe user.getName() >/<print unsafe user.getRole() ><br/>
+<if "admin".equals(user.getRole()) >
+<table>
+  <tr>
+    <th>NO.</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Publisher</th>
+    <th>PublicationDate</th>
+    <th>Price</th>
+    <th>DiscountPercent</th>
+    <th>DiscountPrice</th>
+  </tr>
+  <getp httl.test.model.Book[] books books>
+  <declare java.text.SimpleDateFormat fmt
+  	new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss") >
+  <loopa httl.test.model.Book book index books >
+  <if book.getPrice()> 0 >
+  <tr>
+    <td><print unsafe index + 1 ></td>
+    <td><print book.getTitle() ></td>
+    <td><print book.getAuthor() ></td>
+    <td><print book.getPublisher() ></td>
+    <td><print unsafe fmt.format(book.getPublication()) ></td>
+    <td><print unsafe book.getPrice() ></td>
+    <td><print unsafe book.getDiscount() >%</td>
+    <td><print unsafe book.getPrice() * book.getDiscount() / 100 ></td>
+  </tr>
+  <end>
+  <end>
+</table>
+<elseif user != null >
+<table>
+  <tr>
+    <td>No privilege.</td>
+  </tr>
+</table>
+<else>
+<table>
+  <tr>
+    <td>No login.</td>
+  </tr>
+</table>
+<end>
+</body>
+</html>

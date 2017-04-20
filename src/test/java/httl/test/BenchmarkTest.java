@@ -44,7 +44,7 @@ public class BenchmarkTest {
 		boolean stream = "true".equals(System.getProperty("stream"));
 		String engines = System.getProperty("engines");
 		if (engines == null || engines.length() == 0 || engines.startsWith("$")) {
-			engines = "java,httl,velocity,freemarker,smarty4j,beetl";
+			engines = "java,httl,velocity,freemarker,smarty4j,beetl,repeat";
 		}
 		String[] names = engines.split(",");
 		int width = Math.max(String.valueOf(count).length(), 6);
@@ -130,6 +130,7 @@ public class BenchmarkTest {
 	}
 
 	public static void main(String[] args) throws Exception {
+		// System.setProperty("stream", "true");
 		new BenchmarkTest().testBenchmark();
 	}
 
